@@ -7,9 +7,9 @@
   [autoplayInterval]="4000"
   >
   
-  <ng-template pTemplate="item" let-image>
+  <ng-template pTemplate="item" let-image let-i="index">
     <div class="banner-slide" (click)="goTo(image.url)">
-      <img [src]="image.urlToImage" alt="news image" class="banner-img" />
+      <img [src]="image.urlToImage" alt="news image" class="banner-img" (error)="removeImage(i)"/>
       <div class="banner-overlay">
         <div class="banner-title">
           {{ image.title }}

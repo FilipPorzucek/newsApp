@@ -8,6 +8,7 @@ import { NewsService } from '../services/news.service';
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent implements OnInit{
+
   images:any[]=[];
 
   constructor(private newsService:NewsService){}
@@ -41,5 +42,10 @@ export class BannerComponent implements OnInit{
       numScroll: 1
     }
   ];
+
+
+  removeImage(index:number) {
+    this.images.splice(index, 1);
+    }
 
 }
