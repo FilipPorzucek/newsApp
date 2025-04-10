@@ -38,9 +38,9 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+           "styles": [
+  "src/styles.scss"
+],
             "scripts": []
           },
           "configurations": {
@@ -105,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "86c5a06a-3e0d-4add-9989-9535520c896a"
   }
 }

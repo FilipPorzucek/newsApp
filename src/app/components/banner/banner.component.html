@@ -1,0 +1,22 @@
+<div class="banner-wrapper">
+<p-carousel 
+  [value]="images" 
+  [numVisible]="1" 
+  [numScroll]="1" 
+  [circular]="true"
+  [autoplayInterval]="4000"
+  >
+  
+  <ng-template pTemplate="item" let-image>
+    <div class="banner-slide" (click)="goTo(image.url)">
+      <img [src]="image.urlToImage" alt="news image" class="banner-img" />
+      <div class="banner-overlay">
+        <div class="banner-title">
+          {{ image.title }}
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</p-carousel>
+</div>

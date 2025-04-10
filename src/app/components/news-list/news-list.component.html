@@ -1,0 +1,40 @@
+<div class="news-grid">
+  <ng-container *ngFor="let item of pagedNews">
+    <p-card *ngIf="item.visible !== false" class="news-card">
+      
+      <ng-template pTemplate="header">
+        <h5 class="news-title">{{ item.title }}</h5>
+        <h5 class="news-author">{{ item.author }}</h5>
+       
+      </ng-template>
+
+      <ng-template pTemplate="body">
+        <div class="card-body-content">
+          <img 
+            [src]="item.urlToImage" 
+            alt="News image" 
+            class="news-img"
+            (error)="hideItem(item)" />
+
+          <p class="news-text">{{ item.description }}</p>
+        </div>
+
+        <p-button 
+          label="Sprawdź artykuł"
+          icon="pi pi-external-link"
+          iconPos="right"
+          severity="info"
+          (click)="goTo(item.url)">
+        </p-button>
+      </ng-template>
+    </p-card>
+  </ng-container>
+</div>
+
+<p-paginator 
+class="pagination"
+  [rows]="12" 
+  [totalRecords]="news.length" 
+  [rowsPerPageOptions]="[4, 8, 12]" 
+  (onPageChange)="paginate($event)">
+</p-paginator>
