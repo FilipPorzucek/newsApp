@@ -16,8 +16,8 @@ export class NewsService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  getRandomBannerImage(count: number = 5): Observable<any[]> {
-    return this.http.get<any>('https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&apiKey=6c9e1f73f0f54d67a4414ce22c97d8fe')
+  getRandomBannerImage(count: number): Observable<any[]> {
+    return this.http.get<any>( 'https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&pageSize=40&apiKey=6c9e1f73f0f54d67a4414ce22c97d8fe')
       .pipe(
         map(response => {
           const filtered = response.articles.filter((item: any) => item.urlToImage);
