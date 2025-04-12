@@ -5,14 +5,16 @@
     📰 NewsApp
   </div>
 
-
   <div class="search-container">
-    <input type="text" pInputText placeholder="Szukaj..." class="search-input" />
+    <input type="text" 
+    placeholder="Szukaj..." 
+    class="search-input" 
+    pInputText [(ngModel)]="searchTerm" 
+    (input)="onSearch()"/>
     <button class="search-button">
       <i class="pi pi-search"></i>
     </button>
   </div>
-
 
   <div class="topbar-right">
     <button class="favorites-button">
@@ -22,6 +24,5 @@
       <i class="pi pi-user"></i>
     </button>
   </div>
-
-  
+ 
 </div>

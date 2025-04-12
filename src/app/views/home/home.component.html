@@ -1,3 +1,3 @@
-<h1>Strona główna</h1>
+<app-topbar (searchChange)="onSearch($event)"></app-topbar>
 <app-banner></app-banner>
-<app-news-list></app-news-list>
+<app-news-list [searchTerm]="searchTerm"></app-news-list>

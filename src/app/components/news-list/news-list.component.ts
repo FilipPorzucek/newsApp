@@ -1,6 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,Input,OnChanges,OnInit, SimpleChanges } from '@angular/core';
 import { NewsService } from '../services/news.service';
 import e, { response } from 'express';
+import { first } from 'rxjs';
 
 
 @Component({
@@ -9,9 +10,13 @@ import e, { response } from 'express';
   templateUrl: './news-list.component.html',
   styleUrl: './news-list.component.scss'
 })
-export class NewsListComponent implements OnInit{
+export class NewsListComponent implements OnInit,OnChanges{
+
+  @Input() searchTerm:string="";
+
   news:any[]=[];
   pagedNews:any[]=[];
+  filteredNews:any=[];
   rowsPerPage = 12;
 
   goTo(url:any){
@@ -27,6 +32,7 @@ export class NewsListComponent implements OnInit{
   ngOnInit(): void {
       this.newsService.getNews().subscribe((response)=>{
         this.news = response.articles.filter((item: any) => item.urlToImage && item.author);
+        this.filteredNews=[...this.news];
 this.setPage(0, this.rowsPerPage);
       })
 
@@ -40,8 +46,22 @@ this.setPage(0, this.rowsPerPage);
   }
 
   setPage(start:number,end:number){
-    this.pagedNews=this.news.slice(start,end);
+    this.pagedNews = this.filteredNews.slice(start, end); 
 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if(changes['searchTerm']){
+        this.filterNews();
+      }
+  }
+  filterNews() {
+    const term=this.searchTerm.toLowerCase();
+    this.filteredNews=this.news.filter(item=>
+      item.title?.toLowerCase().includes(term)||
+      item.author?.toLowerCase().includes(term)
+    );
+    this.paginate({first:0,rows:12});
   }
 
 

@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  searchTerm:string="";
+
+  onSearch(term:string){
+this.searchTerm=term;
+  }
+
 }

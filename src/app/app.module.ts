@@ -9,23 +9,26 @@ import { providePrimeNG } from 'primeng/config';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PrimengModule } from './shared/primeng/primeng.module';
 
-
+import { FormsModule } from '@angular/forms';
 import MyBluePreset from './themes/blue-presets';
 import { BannerComponent } from './components/banner/banner.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsListComponent,
     HomeComponent,
-    BannerComponent
+    BannerComponent,
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule, 
-    PrimengModule
+    PrimengModule,
+   FormsModule
   ],
   providers: [
     providePrimeNG({

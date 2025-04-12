@@ -9,7 +9,7 @@ const MyBluePreset = definePreset(Aura, {
       200: '#99beff',
       300: '#70a3ff',
       400: '#4e8eff',
-      500: '#2c7aff', // główny niebieski kolor
+      500: '#2c7aff', 
       600: '#2670f1',
       700: '#1f63df',
       800: '#1857cd',
