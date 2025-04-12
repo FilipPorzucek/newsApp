@@ -13,6 +13,7 @@ export class TopbarComponent {
   searchTerm:string="";
 
   @Output() searchChange=new EventEmitter<string>();
+  @Output() toggleSidebar=new EventEmitter<string>();
 
   onSearch(){
     this.searchChange.emit(this.searchTerm);
