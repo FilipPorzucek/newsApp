@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import MyBluePreset from './themes/blue-presets';
 import { BannerComponent } from './components/banner/banner.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     NewsListComponent,
     HomeComponent,
     BannerComponent,
-    TopbarComponent
+    TopbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

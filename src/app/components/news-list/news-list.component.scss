@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
+
 }
 
 .news-card {
@@ -14,11 +15,14 @@
   box-sizing: border-box;
 }
 
+
+
 .p-card {
   height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .p-card-body {
@@ -32,6 +36,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.2rem;
+  color: var(--p-card-text-color);
 
   overflow: hidden;
   display: -webkit-box;
@@ -66,9 +71,10 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  color: var(--p-card-text-color);
   font-size: 0.95rem;
-  line-height: 1.4; /* lub coś zbliżonego, np. 1.3 */
-  min-height: calc(1.4em * 4); /* wysokość na 4 linie */
+  line-height: 1.4; 
+  min-height: calc(1.4em * 4);
 }
 
 p-button {

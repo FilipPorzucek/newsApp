@@ -7,11 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  drawerVisible:boolean=false;
   searchTerm:string="";
+
 
   onSearch(term:string){
 this.searchTerm=term;
   }
+
+ 
 
 }

@@ -1,14 +1,11 @@
 import { Component,Input,OnChanges,OnInit, SimpleChanges } from '@angular/core';
 import { NewsService } from '../services/news.service';
-import e, { response } from 'express';
-import { first } from 'rxjs';
-
 
 @Component({
   selector: 'app-news-list',
   standalone: false,
   templateUrl: './news-list.component.html',
-  styleUrl: './news-list.component.scss'
+  styleUrl: './news-list.component.scss',
 })
 export class NewsListComponent implements OnInit,OnChanges{
 

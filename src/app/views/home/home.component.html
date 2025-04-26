@@ -1,3 +1,4 @@
-<app-topbar (searchChange)="onSearch($event)"></app-topbar>
+<app-topbar (searchChange)="onSearch($event)" (toggleSidebar)="drawerVisible=true"></app-topbar>
+<app-sidebar [(visible)]="drawerVisible"></app-sidebar>
 <app-banner *ngIf="searchTerm===''"></app-banner>
 <app-news-list [searchTerm]="searchTerm"></app-news-list>

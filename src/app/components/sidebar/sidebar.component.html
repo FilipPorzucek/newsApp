@@ -7,15 +7,21 @@
   >
 
   <div class="sidebar-content">
-    <h3>Kategorie</h3>
     <ul class="category-list">
-      <li (click)="selectCategory('general')">📰 Ogólne</li>
-      <li (click)="selectCategory('technology')">💻 Technologia</li>
-      <li (click)="selectCategory('business')">💼 Biznes</li>
-      <li (click)="selectCategory('sports')">🏅 Sport</li>
-      <li (click)="selectCategory('entertainment')">🎬 Rozrywka</li>
-      <li (click)="selectCategory('health')">🧬 Zdrowie</li>
-      <li (click)="selectCategory('science')">🔬 Nauka</li>
+      <li (click)="selectCategory('general')">📰 General</li>
+      <li (click)="selectCategory('technology')">💻 Technology</li>
+      <li (click)="selectCategory('business')">💼 Business</li>
+      <li (click)="selectCategory('sports')">🏅 Sports</li>
+      <li (click)="selectCategory('entertainment')">🎬 Entertainment</li>
+      <li (click)="selectCategory('health')">🧬 Health</li>
+      <li (click)="selectCategory('science')">🔬 Science</li>
     </ul>
   </div>
+
+  <div class="theme-toggle">
+    <i class="pi pi-sun" *ngIf="!checked"></i>
+    <i class="pi pi-moon" *ngIf="checked"></i>
+    <p-toggleswitch [(ngModel)]="checked" (onChange)="onToggleDarkMode()"></p-toggleswitch>
+  </div>
+
 </p-drawer>

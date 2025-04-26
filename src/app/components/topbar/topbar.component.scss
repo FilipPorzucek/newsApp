@@ -49,47 +49,28 @@
   display: flex;
   gap:0.8rem;
 }
-.user-button {
-  background-color: var(--color-gray);
-  border: none;
-  border-radius: 50%;
+::ng-deep .user-button button,
+::ng-deep .favorites-button button,
+::ng-deep .menu-button button {
+  background: transparent;
+  border: 1px solid white;
   width: 36px;
   height: 36px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-
-  .pi {
-    color: black;
-    font-size: 1.1rem;
-  }
-
-  &:hover {
-    background-color: darken(#e5e7eb, 5%); 
-  }
+  align-items: center;
+  border-radius: 50%;
 }
 
-.favorites-button {
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+::ng-deep .user-button button .pi,
+::ng-deep .favorites-button button .pi,
+::ng-deep .menu-button button .pi {
+  font-size: 20px;
+  color: white;
+}
 
-  .pi {
-    color: white;
-    font-size: 1.1rem;
-    line-height: 1;
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1); 
-  }
+::ng-deep .user-button button:hover,
+::ng-deep .favorites-button button:hover,
+::ng-deep .menu-button button:hover {
+  border: none;
 }
