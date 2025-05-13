@@ -9,10 +9,17 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   drawerVisible:boolean=false;
   searchTerm:string="";
+  selectedCategory:string="";
 
 
   onSearch(term:string){
 this.searchTerm=term;
+this.selectedCategory='';
+  }
+
+  onCategorySelected(category: string){
+    this.selectedCategory=category;
+    this.searchTerm='';
   }
 
  

@@ -10,13 +10,19 @@ import { NgModel } from '@angular/forms';
   
 })
 export class TopbarComponent {
+
   searchTerm:string="";
 
   @Output() searchChange=new EventEmitter<string>();
   @Output() toggleSidebar=new EventEmitter<string>();
+  @Output() userIconClicked =new EventEmitter<void>();
 
   onSearch(){
     this.searchChange.emit(this.searchTerm);
   }
+
+  onUserIconClick() {
+    this.userIconClicked.emit();
+   }
 
 }

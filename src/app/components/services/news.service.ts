@@ -8,7 +8,9 @@ import { map } from 'rxjs/operators';
 })
 export class NewsService {
 
-  private apiUrl = 'https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&apiKey=6c9e1f73f0f54d67a4414ce22c97d8fe';
+  private apiKey='6c9e1f73f0f54d67a4414ce22c97d8fe'
+  private apiUrl = `https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&apiKey=${this.apiKey}`;
+
 
   constructor(private http:HttpClient ) {}
 
@@ -16,8 +18,12 @@ export class NewsService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  getNewsByCategory(category: string):Observable<any>{
+    return this.http.get<any>(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${this.apiKey}`)
+  }
+
   getRandomBannerImage(count: number): Observable<any[]> {
-    return this.http.get<any>( 'https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&pageSize=40&apiKey=6c9e1f73f0f54d67a4414ce22c97d8fe')
+    return this.http.get<any>( `https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&pageSize=40&apiKey=${this.apiKey}`)
       .pipe(
         map(response => {
           const filtered = response.articles.filter((item: any) => item.urlToImage);

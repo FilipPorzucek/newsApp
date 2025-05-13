@@ -14,6 +14,9 @@ import MyBluePreset from './themes/blue-presets';
 import { BannerComponent } from './components/banner/banner.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LoginFormComponent } from './components/auth/login-form/login-form.component';
+import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     HomeComponent,
     BannerComponent,
     TopbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AuthComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

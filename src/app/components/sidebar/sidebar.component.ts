@@ -10,10 +10,10 @@ import { Component,Input,Output,EventEmitter,ViewEncapsulation } from '@angular/
 export class SidebarComponent {
   @Input() visible:boolean=false;
   @Output() visibleChange = new EventEmitter<boolean>();
+  @Output() categorySelected=new EventEmitter<string>();
 
   selectCategory(category: string) {
-   
-
+this.categorySelected.emit(category);
   }
   checked: boolean = false;
   onToggleDarkMode(){

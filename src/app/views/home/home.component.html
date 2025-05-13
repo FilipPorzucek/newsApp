@@ -1,4 +1,5 @@
-<app-topbar (searchChange)="onSearch($event)" (toggleSidebar)="drawerVisible=true"></app-topbar>
-<app-sidebar [(visible)]="drawerVisible"></app-sidebar>
+<app-topbar (searchChange)="onSearch($event)" (toggleSidebar)="drawerVisible=true" (userIconClicked)="auth.openDialog()"></app-topbar>
+<app-auth #auth></app-auth>
+<app-sidebar [(visible)]="drawerVisible" (categorySelected)="onCategorySelected($event)"></app-sidebar>
 <app-banner *ngIf="searchTerm===''"></app-banner>
-<app-news-list [searchTerm]="searchTerm"></app-news-list>
+<app-news-list [searchTerm]="searchTerm" [category]="selectedCategory"></app-news-list>

@@ -6,6 +6,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { CarouselModule } from 'primeng/carousel';
 import { DrawerModule } from 'primeng/drawer';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
     PaginatorModule,
     CarouselModule,
     DrawerModule,
-    ToggleSwitchModule
+    ToggleSwitchModule,
+    DialogModule
   ]
 })
 export class PrimengModule { }

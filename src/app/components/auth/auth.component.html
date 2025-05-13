@@ -1,0 +1,47 @@
+<p-dialog 
+  [(visible)]="dialogVisible" 
+  [modal]="true" 
+  [dismissableMask]="true" 
+  (onHide)="onDialogHide()" 
+  [closable]="false" 
+ >
+    <div class="dialog-header">
+    <h2>User Panel</h2>
+    <button type="button" class="close-button" (click)="dialogVisible = false">
+      <i class="pi pi-times"></i>
+    </button>
+  </div>
+<ng-container *ngIf="isLoggedIn(); else notLoggedIn">
+
+  <p><strong>Email:</strong>{{getUser()?.email}}</p>
+  <p><strong>Password:</strong>••••••••</p>
+  <p><strong>Date of Birth:</strong>{{getUser()?.dateOfBirth}}</p>
+  <p-button label="Log out" (onClick)="logout()"></p-button>
+
+  </ng-container>
+
+<ng-template #notLoggedIn>
+   <div class="auth-content">
+  <h3 class="auth-title">Welcome to NewsApp!</h3>
+    <p class="auth-info">You are currently logged out. Log in or create a new account to enjoy personalized content.</p>
+  <div class="auth-buttons">
+    <p-button label="Log in"
+       icon="pi pi-sign-in"
+         iconPos="right" 
+          (onClick)="showLogin = true;
+           showRegister = false"
+            class="p-button-rounded p-button-primary action-button" >
+          </p-button>
+    <p-button label="Register"  
+    icon="pi pi-user-plus" 
+  iconPos="right" 
+   (onClick)="showLogin = false; 
+   showRegister = true" 
+   class="p-button-rounded p-button-primary action-button"></p-button>
+   </div>
+  </div>
+</ng-template>
+
+
+
+</p-dialog>
