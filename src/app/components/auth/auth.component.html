@@ -12,32 +12,57 @@
     </button>
   </div>
 <ng-container *ngIf="isLoggedIn(); else notLoggedIn">
+  <div class="user-info-content">
+    <h3 class="user-info-title">You are logged in!</h3>
 
-  <p><strong>Email:</strong>{{getUser()?.email}}</p>
-  <p><strong>Password:</strong>••••••••</p>
-  <p><strong>Date of Birth:</strong>{{getUser()?.dateOfBirth}}</p>
-  <p-button label="Log out" (onClick)="logout()"></p-button>
+    <div class="user-info-field">
+      <span class="label">Name:</span>
+      <span class="value">{{ getUser()?.name }}</span>
+    </div>
 
-  </ng-container>
+    <div class="user-info-field">
+      <span class="label">Email:</span>
+      <span class="value">{{ getUser()?.email }}</span>
+    </div>
+
+    <div class="user-info-field">
+      <span class="label">Password:</span>
+      <span class="value">••••••••</span>
+    </div>
+
+    <div class="user-info-field">
+      <span class="label">Date of Birth:</span>
+      <span class="value">{{ getUser()?.dateOfBirth }}</span>
+    </div>
+
+    <p-button 
+      label="Log out" 
+      (onClick)="logout()" 
+      class="p-button-rounded p-button-primary logout-button">
+    </p-button>
+  </div>
+</ng-container>
 
 <ng-template #notLoggedIn>
    <div class="auth-content">
   <h3 class="auth-title">Welcome to NewsApp!</h3>
     <p class="auth-info">You are currently logged out. Log in or create a new account to enjoy personalized content.</p>
   <div class="auth-buttons">
+
     <p-button label="Log in"
        icon="pi pi-sign-in"
          iconPos="right" 
-          (onClick)="showLogin = true;
-           showRegister = false"
+         (onClick)="navigateToLogin()"
             class="p-button-rounded p-button-primary action-button" >
           </p-button>
+
     <p-button label="Register"  
     icon="pi pi-user-plus" 
   iconPos="right" 
-   (onClick)="showLogin = false; 
-   showRegister = true" 
-   class="p-button-rounded p-button-primary action-button"></p-button>
+   (onClick)="navigateToRegister()"
+   class="p-button-rounded p-button-primary action-button">
+  </p-button>
+  
    </div>
   </div>
 </ng-template>

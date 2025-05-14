@@ -1,0 +1,56 @@
+
+::ng-deep .p-password {
+  width: 100%;
+}
+
+::ng-deep .p-password .p-inputtext {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+::ng-deep .p-password .p-inputtext:focus {
+  border-color: #1976d2;
+  background-color: #e8f0fe;
+}
+
+::ng-deep .p-datepicker {
+  width: 100%;
+}
+
+::ng-deep .p-datepicker .p-datepicker-input,
+::ng-deep .p-datepicker-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.register-button {
+  padding: 0.8rem 1rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #1565c0;
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+

@@ -17,6 +17,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RegisterFormComponent } from './components/auth/register-form/register-
     BrowserAnimationsModule,
     HttpClientModule, 
     PrimengModule,
-   FormsModule
+   FormsModule,
+   ReactiveFormsModule
   ],
   providers: [
     providePrimeNG({

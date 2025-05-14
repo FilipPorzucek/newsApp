@@ -7,6 +7,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { DrawerModule } from 'primeng/drawer';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { DialogModule } from 'primeng/dialog';
+import { PasswordModule } from 'primeng/password';
+import { DatePickerModule } from 'primeng/datepicker';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { DialogModule } from 'primeng/dialog';
     CarouselModule,
     DrawerModule,
     ToggleSwitchModule,
-    DialogModule
+    DialogModule,
+    PasswordModule,
+    DatePickerModule
   ]
 })
 export class PrimengModule { }

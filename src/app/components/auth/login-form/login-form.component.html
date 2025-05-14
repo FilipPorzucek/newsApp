@@ -1,1 +1,34 @@
-<p>login-form works!</p>
+<div class="container">
+  <h2 class="title">Log in to Your Account</h2>
+
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input 
+      pInputText 
+      type="email" 
+      name="email" 
+      formControlName="email"
+      placeholder="Email" 
+      class="input-field" 
+      required 
+    />
+    <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+      <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+    </div>
+
+
+    <p-password 
+      name="password"
+      formControlName="password" 
+      placeholder="Password" 
+      [feedback]="false" 
+      toggleMask="true"
+      required
+    >
+    </p-password>
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+    </div>
+
+    <button type="submit" class="confirm-button">Log in</button>
+  </form>
+</div>

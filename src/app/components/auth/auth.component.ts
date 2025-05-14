@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -12,8 +13,19 @@ export class AuthComponent {
   dialogVisible=false;
   showLogin=false;
   showRegister=false;
+  test=true;
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService,private router:Router){}
+
+  navigateToLogin(){
+    this.dialogVisible=false;
+    this.router.navigate(['/login']);
+  }
+
+  navigateToRegister(){
+    this.dialogVisible=false;
+    this.router.navigate(['/register']);
+  }
 
   isLoggedIn(){
     return this.authService.isLoggedIn();
@@ -31,7 +43,6 @@ export class AuthComponent {
 
   openDialog() {
     this.dialogVisible = true;
-    console.log('Opening dialog!'); 
   }
   onLoginSuccess() {
   this.dialogVisible = false;
