@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../../shared/models/login-request.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +17,7 @@ export class LoginFormComponent implements OnInit{
 
   email: string = '';
   password: string = '';
-  constructor(private fb:FormBuilder, private authService:AuthService){}
+  constructor(private fb:FormBuilder, private authService:AuthService,private rouetr:Router){}
 
    ngOnInit(): void {
     this.loginForm=this.fb.group({
@@ -34,7 +35,7 @@ export class LoginFormComponent implements OnInit{
     const loginData: LoginRequest = this.loginForm.value;
     this.authService.login(loginData).subscribe(user => {
       console.log('User logged in:', user);
-      
+      this.rouetr.navigate(['/home']);
     });
   }
 

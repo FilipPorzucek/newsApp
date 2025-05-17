@@ -22,13 +22,18 @@
 
           <p class="news-text">{{ item.description }}</p>
         </div>
+<div class="card-footer">
 
-        <p-button 
-          label="Sprawdź artykuł"
-          icon="pi pi-external-link"
-          iconPos="right"     
-          (click)="goTo(item.url)">
-        </p-button>
+
+  <p-button 
+    label="Sprawdź artykuł"
+    icon="pi pi-external-link"
+    iconPos="right"     
+    (click)="goTo(item.url)">
+  </p-button>
+
+    <i class="pi pi-heart favorite-icon"></i>
+</div>
       </ng-template>
     </p-card>
   </ng-container>

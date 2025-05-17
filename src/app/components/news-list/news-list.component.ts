@@ -72,6 +72,4 @@ this.setPage(0, this.rowsPerPage);
     this.paginate({ first: 0, rows: this.rowsPerPage });
   }
 
-
-
 }

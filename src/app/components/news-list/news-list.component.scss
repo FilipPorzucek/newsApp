@@ -83,3 +83,26 @@ p-button {
 :host ::ng-deep .pagination .active{
   background:red;
 }
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.favorite-icon {
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #e74c3c;
+  }
+}
+
+p-button {
+  align-self: flex-end;
+}

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent implements OnInit{
-   registerForm!: FormGroup;
+ registerForm!: FormGroup;
  name: string = '';
   email: string = '';
   password: string = '';
@@ -62,7 +62,7 @@ onSubmit(){
 
     this.authService.register(registerData).subscribe(user => {
       console.log('User registered successfully:', user);
-      this.rouetr.navigate(['/home']);
+      this.rouetr.navigate(['/login']);
     });
 
 

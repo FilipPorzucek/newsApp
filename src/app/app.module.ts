@@ -38,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule, 
     PrimengModule,
    FormsModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+
   ],
   providers: [
     providePrimeNG({
