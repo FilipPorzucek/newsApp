@@ -19,6 +19,17 @@ constructor(private http:HttpClient){
   private apiUrl="http://127.0.0.1:8000"
     private apiUrl2="http://127.0.0.1:80/register_proxy.php"
 
+    private loadSessionData(): void {
+    const data = sessionStorage.getItem(this.storageKey);
+    if (data) {
+        this.user = JSON.parse(data);
+        this.loggedIn = true;
+        console.log('✅ Session restored. User:', this.user);
+    } else {
+        console.warn('⚠️ No session data found.');
+    }
+}
+
  login(data: LoginRequest): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, data).pipe(
       tap(response => {
@@ -35,18 +46,16 @@ constructor(private http:HttpClient){
     sessionStorage.removeItem(this.storageKey);
   }
 
-  private loadSessionData(): void {
-    const data = sessionStorage.getItem(this.storageKey);
-    if (data) {
-      this.user = JSON.parse(data);
-      this.loggedIn = true;
+
+
+getToken(): string | null {
+    if (!this.user) {
+        this.loadSessionData();
     }
-  }
-
- getToken(): string | null {
-  return this.user?.token ?? null;
+    console.log('🔑 getToken() called. Current user:', this.user);
+    // Tutaj zmiana:
+    return this.user?.access_token ?? null;
 }
-
 
  register(data: any): Observable<User> {
     return this.http.post<User>(`${this.apiUrl2}`, data);

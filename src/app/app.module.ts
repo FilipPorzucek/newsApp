@@ -18,6 +18,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FavoritesListComponent } from './favorites-list/favorites-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     AuthComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    FavoritesListComponent
   ],
   imports: [
     BrowserModule,

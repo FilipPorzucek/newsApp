@@ -32,7 +32,10 @@
     (click)="goTo(item.url)">
   </p-button>
 
-    <i class="pi pi-heart favorite-icon"></i>
+<i 
+  class="pi pi-heart favorite-icon"
+  (click)="handleFavoriteClick($event, item)">
+</i>
 </div>
       </ng-template>
     </p-card>

@@ -12,6 +12,7 @@ export class NewsListComponent implements OnInit,OnChanges{
 
   @Input() searchTerm:string="";
   @Input() category:string="";
+  @Input() showFavorites:boolean=false;
 
   news:any[]=[];
   pagedNews:any[]=[];
@@ -34,6 +35,7 @@ export class NewsListComponent implements OnInit,OnChanges{
         this.filteredNews=[...this.news];
 this.setPage(0, this.rowsPerPage);
       })
+      
   }
 
 
@@ -47,14 +49,62 @@ this.setPage(0, this.rowsPerPage);
     this.pagedNews = this.filteredNews.slice(start, end); 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-      if(changes['category'] && this.category){
+ngOnChanges(changes: SimpleChanges): void {
+    if (changes['showFavorites']) {
+        if (this.showFavorites) {
+            this.loadFavorites();
+        } else {
+            this.loadNews();
+        }
+    } 
+    if (changes['category'] && this.category && !this.showFavorites) {
         this.fetchNewsByCategory();
-      }else if(changes['searchTerm']){
-
+    } 
+    if (changes['searchTerm'] && !this.showFavorites) {
         this.filterNews();
-      }
-  }
+    }
+}
+loadNews() {
+    this.newsService.getNews().subscribe((response) => {
+        this.news = response.articles.filter((item: any) => item.urlToImage && item.author);
+        this.filteredNews = [...this.news];
+        this.setPage(0, this.rowsPerPage);
+    });
+}
+
+handleFavoriteClick(event: MouseEvent, item: any): void {
+  const el = event.target as HTMLElement;
+
+
+  el.classList.add('clicked');
+  setTimeout(() => {
+    el.classList.remove('clicked');
+  }, 300);
+
+  
+  el.classList.toggle('active');
+
+
+  this.toggleFavorite(item);
+}
+
+loadFavorites() {
+    this.newsService.getFavoritesFromBackend().subscribe(favoritesData => {
+        this.news = favoritesData.map((fav: any) => ({
+            title: fav.title,
+            url: fav.url,
+            urlToImage: 'https://via.placeholder.com/300x150?text=Favorite',
+            author: 'Favorite',
+            description: 'Zapisany ulubiony artykuł.'
+        }));
+        this.filteredNews = [...this.news];
+        this.setPage(0, this.rowsPerPage);
+    });
+}
+toggleFavorite(item: any): void {
+  this.newsService.addToFavoritesBackend(item.title, item.url);
+}
+
   fetchNewsByCategory(): void {
     this.newsService.getNewsByCategory(this.category).subscribe(response => {
       this.news = response.articles.filter((item: any) => item.urlToImage && item.author);

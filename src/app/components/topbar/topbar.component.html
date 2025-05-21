@@ -19,9 +19,11 @@
   </div>
 
   <div class="topbar-right">
-    <p-button class="favorites-button">
-      <i class="pi pi-heart"></i>
-    </p-button>
+    <p-button 
+  class="favorites-button" 
+  icon="pi pi-heart" 
+  (onClick)="toggleFavorites()">
+</p-button>
     <p-button class="user-button" (onClick)="onUserIconClick()">
       <i class="pi pi-user"></i>
     </p-button>

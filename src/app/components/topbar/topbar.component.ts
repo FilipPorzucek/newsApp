@@ -12,10 +12,12 @@ import { NgModel } from '@angular/forms';
 export class TopbarComponent {
 
   searchTerm:string="";
+  showFavorites=false;
 
   @Output() searchChange=new EventEmitter<string>();
   @Output() toggleSidebar=new EventEmitter<string>();
   @Output() userIconClicked =new EventEmitter<void>();
+  @Output() favoritesToggle = new EventEmitter<boolean>();
 
   onSearch(){
     this.searchChange.emit(this.searchTerm);
@@ -24,5 +26,11 @@ export class TopbarComponent {
   onUserIconClick() {
     this.userIconClicked.emit();
    }
+
+   toggleFavorites() {
+  this.showFavorites = !this.showFavorites;
+  this.favoritesToggle.emit(this.showFavorites);
+   console.log('Favorites button clicked');
+}
 
 }

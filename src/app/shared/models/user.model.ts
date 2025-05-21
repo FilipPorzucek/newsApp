@@ -3,5 +3,6 @@ export interface User {
   name: string;
   email: string;
   dateOfBirth: Date | string;  
-  token?: string;
+    access_token: string; 
+    token_type?: string;  
 }
