@@ -1,17 +1,33 @@
-<div class="favorites-grid">
+<div class="news-grid">
   <ng-container *ngFor="let item of favorites">
-    <p-card class="news-card" [style.background-color]="'var(--p-card-background)'">
+    <p-card 
+      class="news-card"
+      [style.background-color]="'var(--p-card-background)'">
+      
       <ng-template pTemplate="header">
         <h5 class="news-title">{{ item.title }}</h5>
+        <h5 class="news-author">{{ item.author }}</h5>
       </ng-template>
+
       <ng-template pTemplate="body">
-        <p class="news-text">{{ item.url }}</p>
-        <p-button 
-          label="Sprawdź artykuł" 
-          icon="pi pi-external-link" 
-          iconPos="right" 
-          (click)="goTo(item.url)">
-        </p-button>
+        <div class="card-body-content">
+          <img 
+            *ngIf="item.urlToImage" 
+            [src]="item.urlToImage" 
+            class="news-img"
+            alt="Miniatura artykułu">
+          
+          <p class="news-text">{{ item.description }}</p>
+        </div>
+
+        <div class="card-footer">
+          <p-button 
+            label="Sprawdź artykuł" 
+            icon="pi pi-external-link" 
+            iconPos="right" 
+            (click)="goTo(item.url)">
+          </p-button>
+        </div>
       </ng-template>
     </p-card>
   </ng-container>

@@ -18,6 +18,7 @@ export class TopbarComponent {
   @Output() toggleSidebar=new EventEmitter<string>();
   @Output() userIconClicked =new EventEmitter<void>();
   @Output() favoritesToggle = new EventEmitter<boolean>();
+  @Output() goHome= new EventEmitter<void>();
 
   onSearch(){
     this.searchChange.emit(this.searchTerm);

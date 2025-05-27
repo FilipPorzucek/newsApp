@@ -30,4 +30,10 @@ this.showFavorites=false;
     console.log('Favorites toggled, current state:', this.showFavorites);
   }
 
+  resetToHome() {
+  this.searchTerm = '';
+  this.showFavorites = false;
+  this.selectedCategory ='';
+}
+
 }

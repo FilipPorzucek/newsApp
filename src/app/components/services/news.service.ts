@@ -29,7 +29,7 @@ private favoritesStorageKey = 'favorites';
     return this.http.get<any[]>('http://localhost:8000/favorite/list', { headers });
 }
 
-addToFavoritesBackend(title: string, url: string): void {
+addToFavoritesBackend(title: string, url: string, urlToImage: string): void {
     let token = this.authService.getToken();
 
     if (!token) {
@@ -42,7 +42,7 @@ addToFavoritesBackend(title: string, url: string): void {
         'Content-Type': 'application/json'
     });
 
-    const body = { title, url };
+    const body = { title, url,urlToImage};
 
     console.log('📦 Sending to backend:', body,token);
 

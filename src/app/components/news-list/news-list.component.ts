@@ -50,19 +50,25 @@ this.setPage(0, this.rowsPerPage);
   }
 
 ngOnChanges(changes: SimpleChanges): void {
-    if (changes['showFavorites']) {
-        if (this.showFavorites) {
-            this.loadFavorites();
-        } else {
-            this.loadNews();
-        }
-    } 
-    if (changes['category'] && this.category && !this.showFavorites) {
-        this.fetchNewsByCategory();
-    } 
-    if (changes['searchTerm'] && !this.showFavorites) {
-        this.filterNews();
+  if (changes['showFavorites']) {
+    if (this.showFavorites) {
+      this.loadFavorites();
+    } else {
+      this.loadNews(); 
     }
+  }
+
+  if (changes['category'] && !this.showFavorites) {
+    if (this.category) {
+      this.fetchNewsByCategory();
+    } else {
+      this.fetchDefaultNews(); 
+    }
+  }
+
+  if (changes['searchTerm'] && !this.showFavorites) {
+    this.filterNews();
+  }
 }
 loadNews() {
     this.newsService.getNews().subscribe((response) => {
@@ -75,17 +81,19 @@ loadNews() {
 handleFavoriteClick(event: MouseEvent, item: any): void {
   const el = event.target as HTMLElement;
 
+  this.animateHeart(el); 
+  this.toggleFavorite(item); 
+}
 
+private animateHeart(el: HTMLElement): void {
   el.classList.add('clicked');
+
   setTimeout(() => {
     el.classList.remove('clicked');
-  }, 300);
+  }, 800); 
 
   
   el.classList.toggle('active');
-
-
-  this.toggleFavorite(item);
 }
 
 loadFavorites() {
@@ -102,7 +110,7 @@ loadFavorites() {
     });
 }
 toggleFavorite(item: any): void {
-  this.newsService.addToFavoritesBackend(item.title, item.url);
+  this.newsService.addToFavoritesBackend(item.title, item.url,item.urlToImage);
 }
 
   fetchNewsByCategory(): void {
@@ -112,6 +120,15 @@ toggleFavorite(item: any): void {
       this.paginate({ first: 0, rows: this.rowsPerPage });
     });
   }
+
+    fetchDefaultNews(): void {
+    this.newsService.getNews().subscribe(response => {
+      this.news = response.articles.filter((item: any) => item.urlToImage && item.author);
+      this.filteredNews = [...this.news];
+      this.paginate({ first: 0, rows: this.rowsPerPage });
+    });
+  }
+
 
   filterNews() {
     const term=this.searchTerm.toLowerCase();

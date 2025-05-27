@@ -42,11 +42,12 @@
   </ng-container>
 </div>
 
+<div class="pagination">
 <p-paginator 
-class="pagination"
   [rows]="12" 
   [style.background-color]="'var(--p-paginator-background)'"
   [totalRecords]="news.length" 
   [rowsPerPageOptions]="[4, 8, 12]" 
   (onPageChange)="paginate($event)">
 </p-paginator>
+</div>
