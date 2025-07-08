@@ -1,6 +1,13 @@
-<app-topbar (searchChange)="onSearch($event)"  (favoritesToggle)="onFavoritesToggle($event)" (toggleSidebar)="drawerVisible=true" (userIconClicked)="auth.openDialog()" (goHome)="resetToHome()"></app-topbar>
+<app-topbar (searchChange)="onSearch($event)"  
+(favoritesToggle)="onFavoritesToggle($event)" 
+(toggleSidebar)="drawerVisible=true" 
+(userIconClicked)="auth.openDialog()"
+ (goHome)="resetToHome()"
+ (refreshNews)="onRefreshNews()"
+ >
+</app-topbar>
 <app-auth #auth></app-auth>
 <app-sidebar [(visible)]="drawerVisible" (categorySelected)="onCategorySelected($event)"></app-sidebar>
 <app-banner *ngIf="searchTerm===''"></app-banner>
-<app-news-list  [showFavorites]="showFavorites"  [searchTerm]="searchTerm" [category]="selectedCategory"></app-news-list>
+<app-news-list  [showFavorites]="showFavorites"  [searchTerm]="searchTerm" [category]="selectedCategory" ></app-news-list>
 <app-favorites-list *ngIf="showFavorites"></app-favorites-list>

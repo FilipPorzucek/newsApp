@@ -19,6 +19,7 @@ export class TopbarComponent {
   @Output() userIconClicked =new EventEmitter<void>();
   @Output() favoritesToggle = new EventEmitter<boolean>();
   @Output() goHome= new EventEmitter<void>();
+  @Output() refreshNews=new EventEmitter<void>();
 
   onSearch(){
     this.searchChange.emit(this.searchTerm);
@@ -32,6 +33,10 @@ export class TopbarComponent {
   this.showFavorites = !this.showFavorites;
   this.favoritesToggle.emit(this.showFavorites);
    console.log('Favorites button clicked');
+}
+
+onRefreshClick(){
+  this.refreshNews.emit();
 }
 
 }

@@ -53,7 +53,7 @@ getToken(): string | null {
         this.loadSessionData();
     }
     console.log('🔑 getToken() called. Current user:', this.user);
-    // Tutaj zmiana:
+  
     return this.user?.access_token ?? null;
 }
 

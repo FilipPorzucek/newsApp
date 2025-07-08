@@ -1,3 +1,4 @@
+  <p-toast position="top-right"></p-toast>
 <div class="news-grid">
   <ng-container *ngFor="let item of pagedNews">
     <p-card 
@@ -34,6 +35,7 @@
 
 <i 
   class="pi pi-heart favorite-icon"
+    [class.active]="item.isFavorite"
   (click)="handleFavoriteClick($event, item)">
 </i>
 </div>
@@ -44,6 +46,7 @@
 
 <div class="pagination">
 <p-paginator 
+#paginator
   [rows]="12" 
   [style.background-color]="'var(--p-paginator-background)'"
   [totalRecords]="news.length" 

@@ -100,4 +100,7 @@ small{
     transform: translateY(0);
   }
 }
+body.p-overflow-hidden {
+  overflow-y: scroll !important; 
+}
 

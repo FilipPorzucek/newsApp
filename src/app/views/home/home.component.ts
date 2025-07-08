@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NewsListComponent } from '../../components/news-list/news-list.component';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,13 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent {
+
+@ViewChild(NewsListComponent) newsList!:NewsListComponent;
+
+onRefreshNews(){
+  this.newsList.updateNewsFromBackend();
+}
+
   drawerVisible:boolean=false;
   searchTerm:string="";
   selectedCategory:string="";
@@ -30,10 +38,11 @@ this.showFavorites=false;
     console.log('Favorites toggled, current state:', this.showFavorites);
   }
 
-  resetToHome() {
+resetToHome() {
+  this.newsList.refreshNewsForHome();
   this.searchTerm = '';
   this.showFavorites = false;
-  this.selectedCategory ='';
+  this.selectedCategory = '';
 }
 
 }

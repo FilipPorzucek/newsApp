@@ -10,8 +10,8 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class NewsService {
 
-  private apiKey='6c9e1f73f0f54d67a4414ce22c97d8fe'
-  private apiUrl = `https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&apiKey=${this.apiKey}`;
+
+  private apiUrl = `http://localhost:8000/news`;
   private favorites: { title: string; url: string }[] = [];
 private favoritesStorageKey = 'favorites';
 
@@ -29,7 +29,7 @@ private favoritesStorageKey = 'favorites';
     return this.http.get<any[]>('http://localhost:8000/favorite/list', { headers });
 }
 
-addToFavoritesBackend(title: string, url: string, urlToImage: string): void {
+addToFavoritesBackend(id:number): void {
     let token = this.authService.getToken();
 
     if (!token) {
@@ -42,7 +42,7 @@ addToFavoritesBackend(title: string, url: string, urlToImage: string): void {
         'Content-Type': 'application/json'
     });
 
-    const body = { title, url,urlToImage};
+    const body = {id};
 
     console.log('📦 Sending to backend:', body,token);
 
@@ -78,23 +78,27 @@ private loadFavorites(): void {
   }
 }
 
-  getNews():Observable<any>{
-    return this.http.get<any>(this.apiUrl);
+  getNews():Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  updateNews():Observable<any[]>{
+    return this.http.get<any[]>(`http://localhost:8000/news/update`)
   }
 
   getNewsByCategory(category: string):Observable<any>{
-    return this.http.get<any>(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${this.apiKey}`)
+    return this.http.get<any>(`http://localhost:8000/news/${category}`)
   }
 
-  getRandomBannerImage(count: number): Observable<any[]> {
-    return this.http.get<any>( `https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&pageSize=40&apiKey=${this.apiKey}`)
-      .pipe(
-        map(response => {
-          const filtered = response.articles.filter((item: any) => item.urlToImage);
-          return this.getRandomItems(filtered, count);
-        })
-      );
-  }
+getRandomBannerImage(count: number): Observable<any[]> {
+  return this.http.get<any[]>(`http://localhost:8000/news/send/banner`)
+    .pipe(
+      map(response => {
+        const filtered = (response || []).filter((item: any) => item.urlToImage);
+        return this.getRandomItems(filtered, count);
+      })
+    );
+}
   getRandomItems(array: any[], count: number): any[] {
    const shuffled=array.sort(()=>0.5-Math.random());
    return shuffled.slice(0,count);

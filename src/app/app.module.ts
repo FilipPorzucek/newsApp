@@ -19,6 +19,7 @@ import { LoginFormComponent } from './components/auth/login-form/login-form.comp
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FavoritesListComponent } from './favorites-list/favorites-list.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FavoritesListComponent } from './favorites-list/favorites-list.componen
       theme: {
         preset: MyBluePreset
       }
-    })
+    }),
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { DatePickerModule } from 'primeng/datepicker';
+import { Toast, ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { DatePickerModule } from 'primeng/datepicker';
     ToggleSwitchModule,
     DialogModule,
     PasswordModule,
-    DatePickerModule
+    DatePickerModule,
+    ToastModule
+    
   ]
 })
 export class PrimengModule { }

@@ -14,14 +14,20 @@ export class BannerComponent implements OnInit{
 
   constructor(private newsService:NewsService){}
 
-  ngOnInit(): void {
-    this.newsService.getRandomBannerImage(20).subscribe((articles) => {
-      const valid = articles.filter(item => this.isValidImageUrl(item.urlToImage));
-      const unique=this.getUniqueArticlesByUrl(valid);
-      this.allNews=unique;
-      this.loadBannerImages();
-      })
-  }
+ ngOnInit(): void {
+  this.newsService.getRandomBannerImage(20).subscribe((articles) => {
+    console.log("Odebrane artykuły:", articles);  
+    
+    const valid = articles.filter(item => this.isValidImageUrl(item.urlToImage));
+    console.log("Z poprawnym URL:", valid); 
+
+    const unique = this.getUniqueArticlesByUrl(valid);
+    console.log("Unikalne newsy:", unique);
+
+    this.allNews = unique;
+    this.loadBannerImages();
+  });
+}
   getUniqueArticlesByUrl(articles: any[]):any[] {
     const seen=new Set();
     return articles.filter(article=>{
@@ -72,9 +78,5 @@ export class BannerComponent implements OnInit{
       numScroll: 1
     }
   ];
-
-
-
-
 
 }
